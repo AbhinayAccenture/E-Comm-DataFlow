@@ -1,93 +1,104 @@
+*Purpose:
 
-**Project Title:** Mini E-Commerce Data Pipeline with Azure and Databricks  
+The purpose of this project is to build an end-to-end data pipeline using Azure Synapse, Databricks, and Power BI to process and analyze e-commerce data. This project simulates a real-world scenario where large volumes of customer and transaction data are ingested, processed, and visualized for business insights.
 
----
 
-## **Purpose**  
-The purpose of this project is to build an end-to-end data pipeline using Azure and Databricks to process e-commerce data. This project simulates a real-world scenario where large volumes of customer and transaction data are ingested, processed, and visualized for business insights.  
 
----
+*Impact:
 
-## **Impact**  
-- **Business Insight:** The processed data can provide insights into customer behavior, sales trends, and product performance.  
-- **Real-Time Analytics:** The pipeline allows near real-time data processing to keep the data updated and actionable.  
-- **Data Quality and Accuracy:** Proper ETL processing ensures clean, accurate, and structured data for reporting and analysis.  
-- **Cost Optimization:** Using Azure resources efficiently to minimize cloud costs while handling high data volume.  
+Business Insight: The processed data can provide insights into customer behavior, sales trends, and product performance.
 
----
+Real-Time Analytics: The pipeline allows near real-time data processing to keep the data updated and actionable.
 
-## **Architecture Overview**  
-1. **Data Source:** Sample e-commerce dataset stored in Azure Blob Storage.  
-2. **Data Processing:** Databricks for ETL processing.  
-3. **Data Storage:** Processed data stored back into Blob Storage.  
-4. **Data Visualization:** Power BI for creating business dashboards and reports.  
-5. **CI/CD:** GitHub Actions for automating deployment and version control.    
+Data Quality and Accuracy: Proper ETL processing ensures clean, accurate, and structured data for reporting and analysis.
 
----
+Cost Optimization: Using Azure resources efficiently to minimize cloud costs while handling high data volume.
 
-## **Steps Involved**  
 
-### **1. Data Ingestion**  
-- Create an Azure Blob Storage account.  
-- Upload sample e-commerce data files (CSV format) to Blob Storage.  
 
-### **2. Data Processing in Databricks**  
-- Create a Databricks cluster on Azure.  
-- Connect Databricks to Blob Storage using a service principal or SAS token.  
-- Create a Databricks notebook:  
-   - Read data from Blob Storage.  
-   - Clean and transform data (e.g., handling null values, type casting).  
-   - Aggregate data for business insights.  
-   - Write processed data back to Blob Storage.  
+*Architecture Overview:
 
-### **3. Data Visualization in Power BI**  
-- Connect Power BI to Blob Storage.  
-- Import processed data into Power BI.  
-- Create visualizations (e.g., sales by category, customer behavior).  
+Data Source: Sample e-commerce dataset stored in Azure Blob Storage.
 
-### **4. CI/CD Setup**  
-- Create a GitHub repository.  
-- Add project files and data pipeline scripts.  
-- Set up GitHub Actions for CI/CD:  
-   - On commit, trigger build and deployment.  
-   - Deploy Databricks notebook and Power BI template automatically.  
+Data Ingestion: Synapse pipeline to load data into Synapse tables.
 
-### **5. Testing and Validation**  
-- Validate the data accuracy and completeness.  
-- Test data pipeline performance and scalability.  
+Data Processing: Databricks for ETL processing.
 
----
+Data Storage: Processed data stored back into Synapse tables.
 
-## **Additional Requirements**  
-✅ Service Principal for Databricks connection to Blob Storage.  
-✅ Contributor role for deploying CI/CD using GitHub Actions.  
-✅ Power BI workspace connection to Azure Blob Storage.  
-✅ Proper firewall and VNet configuration for secure connectivity.  
+Data Visualization: Power BI connected to Synapse for creating business dashboards and reports.
 
----
+CI/CD: GitHub Actions for automating build, test, and artifact creation (excluding deployment).
 
-## **Challenges & Suggestions**  
-⚠️ **Permission Issues:** Ensure that Databricks and GitHub Actions have proper access to Blob Storage and Power BI.  
-⚠️ **Performance Tuning:** Optimize Databricks cluster size based on data volume and complexity.  
-⚠️ **Cost Monitoring:** Use Azure cost analysis to monitor spending on Databricks and Power BI.  
-💡 **Alternative:** If service principal setup is blocked, perform manual deployment and document the steps.  
 
----
 
-## **Outcome**  
-This project will simulate a real-world e-commerce data processing pipeline and provide meaningful business insights. The automated CI/CD setup will enable continuous improvement and deployment.  
+*Steps Involved:
 
----
+1. Data Ingestion using Synapse
+Create an Azure Synapse workspace.
+Create a Synapse Pipeline to ingest sample e-commerce data (CSV format) from Blob Storage into Synapse tables.
+Use a data flow activity for data mapping and transformation if required.
 
-## **Future Enhancements**  
-- Add real-time streaming using Azure Event Hub and Kafka.  
-- Integrate predictive analytics using Azure Machine Learning.  
-- Automate cost optimization using Azure Advisor.  
+2. Data Processing in Databricks
+Create a Databricks cluster on Azure.
+Connect Databricks to Synapse using a linked service or managed identity.
+Create a Databricks notebook:
+Read data from Synapse tables.
+Clean and transform data (e.g., handling null values, type casting).
+Aggregate data for business insights.
+Write processed data back into Synapse tables.
 
----
+3. Data Visualization in Power BI
+Connect Power BI to Synapse using DirectQuery or Import mode.
+Import processed data from Synapse tables into Power BI.
+Create visualizations (e.g., sales by category, customer behavior).
 
-**Estimated Completion Time:** 8–12 hours  
-**Skill Level:** Intermediate  
-**Author:** Abhinay Duggaraju
+4. CI/CD Setup
+Create a GitHub repository.
+Add project files and data pipeline scripts.
+Set up GitHub Actions for CI/CD:
+On commit, trigger build and lint checks.
+Run unit tests for PySpark transformations.
+Generate artifacts (processed data and scripts).
+Skip deployment due to permission limits.
 
----
+5. Testing and Validation
+Validate the data accuracy and completeness.
+Test data pipeline performance and scalability.
+
+
+
+*Additional Requirements:
+
+✅ Service Principal for Synapse and Databricks connection.
+✅ Contributor role for deploying CI/CD using GitHub Actions.
+✅ Power BI workspace connection to Synapse.
+✅ Proper firewall and VNet configuration for secure connectivity.
+
+
+
+*Challenges & Suggestions:
+
+⚠️ Permission Issues: Ensure Synapse and GitHub Actions have proper access to Databricks and Power BI.
+⚠️ Performance Tuning: Optimize Synapse and Databricks cluster size based on data volume and complexity.
+⚠️ Cost Monitoring: Use Azure cost analysis to monitor spending on Synapse and Databricks.
+💡 Alternative: If service principal setup is blocked, perform manual deployment and document the steps.
+
+
+
+*Outcome:
+
+This project will simulate a real-world e-commerce data processing pipeline and provide meaningful business insights. The automated CI/CD setup will enable continuous improvement and deployment.
+
+
+
+*Future Enhancements:
+Add real-time streaming using Azure Event Hub and Kafka.
+Integrate predictive analytics using Azure Machine Learning.
+Automate cost optimization using Azure Advisor.
+
+
+
+Estimated Completion Time: 8–12 hours
+Skill Level: Intermediate
+Author: Abhinay Duggaraju

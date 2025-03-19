@@ -1,0 +1,25 @@
+*Open project folder
+
+--> git init |-----------------------------------------------------------------Makes the current folder as local git repo
+--> git remote add origin git@github.com:<username>/<repo-name>.git |----------To sync local repo to git repo
+--> git checkout -b main |-----------------------------------------------------Default master branch, this creates a main branch
+
+
+*For PUSH
+
+--> git add . |----------------------------------------------------------------Add all files
+  --> git add <filename> |-----------------------------------------------------Add specific file
+
+--> git commit -m "Commit message" |-------------------------------------------Commit with a message
+
+--> git push -u origin main |--------------------------------------------------(-u)set upstream, means sets to track branch, use for first push
+  --> git push  |--------------------------------------------------------------subsequest pushes no need to specify branch
+
+
+*Autogenerate requirements.txt
+
+--> pip freeze > requirements.txt 
+
+*Sync local repo with git repo
+
+--> git pull origin main --rebase
